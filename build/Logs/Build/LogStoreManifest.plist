@@ -6,7 +6,7 @@
 	<integer>12</integer>
 	<key>logs</key>
 	<dict>
-		<key>DB75D745-6BB0-4340-A61D-1836E8553A5A</key>
+		<key>23E62C5C-1648-4BBB-BCA8-4FFED12B01E6</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>DB75D745-6BB0-4340-A61D-1836E8553A5A.xcactivitylog</string>
+			<string>23E62C5C-1648-4BBB-BCA8-4FFED12B01E6.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -40,13 +40,13 @@
 			<key>signature</key>
 			<string>Building project MatchMate with scheme MatchMate and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>808280769.46261597</real>
+			<real>808286087.64369404</real>
 			<key>timeStoppedRecording</key>
-			<real>808280824.43184197</real>
+			<real>808286133.66249001</real>
 			<key>title</key>
 			<string>Building project MatchMate with scheme MatchMate and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>DB75D745-6BB0-4340-A61D-1836E8553A5A</string>
+			<string>23E62C5C-1648-4BBB-BCA8-4FFED12B01E6</string>
 		</dict>
 	</dict>
 </dict>

@@ -8,21 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		0B31E3778DA0D85C30EB5936 /* MatchMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */; };
+		0E790571A90BC6851B7B7E05 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0471BE09AA21D8474CECB /* Match.swift */; };
+		3C30B701535CDD261CD3C080 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E06B181F990C4C444F1185 /* MainTabView.swift */; };
 		46E07F23AA970D7DFF482BB8 /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */; };
 		7D86FA0A75047A4D9BDE28AB /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EBD2DD67290D5817E86 /* ProfileCardView.swift */; };
 		B43C82EB33EBE706D7EA1B81 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EFB6F7AD0F5D4131F4BDEB /* UserProfile.swift */; };
+		BD7614F6E193BD90BB930220 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CE2A42EBA66F9969018F /* ProfileView.swift */; };
+		E08A189ACA0C095C484CFB65 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886ACBB65AC551C52290F2D8 /* MatchesView.swift */; };
+		FD053E6AB1BDD1B1770B352D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AF649F480620643E49CE /* AppState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateApp.swift; sourceTree = "<group>"; };
+		48E06B181F990C4C444F1185 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		571D6A584E07102FED238558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
+		8289CE2A42EBA66F9969018F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		82E86B10F31B56529CE79163 /* MatchMate.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MatchMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		886ACBB65AC551C52290F2D8 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
+		C065AF649F480620643E49CE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		CFA0471BE09AA21D8474CECB /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		D4EFB6F7AD0F5D4131F4BDEB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F1199EBD2DD67290D5817E86 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		057CB2F6B550BCD44F7EB668 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C065AF649F480620643E49CE /* AppState.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		2B80D7FB6C1271A8BF625D1E = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				5320BA6A3BD7551674F2859C /* Discovery */,
+				AE7D36E349DFF778DC6E0E4A /* Matches */,
+				B56362189E8DFB1A5E199BF4 /* Profile */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -61,10 +81,29 @@
 			isa = PBXGroup;
 			children = (
 				571D6A584E07102FED238558 /* Info.plist */,
+				48E06B181F990C4C444F1185 /* MainTabView.swift */,
 				0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */,
+				057CB2F6B550BCD44F7EB668 /* Core */,
 				8A0D02FBCDF98A321CC2D6BC /* Features */,
 			);
 			path = MatchMate;
+			sourceTree = "<group>";
+		};
+		AE7D36E349DFF778DC6E0E4A /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				CFA0471BE09AA21D8474CECB /* Match.swift */,
+				886ACBB65AC551C52290F2D8 /* MatchesView.swift */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
+		B56362189E8DFB1A5E199BF4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8289CE2A42EBA66F9969018F /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD053E6AB1BDD1B1770B352D /* AppState.swift in Sources */,
 				46E07F23AA970D7DFF482BB8 /* DiscoveryView.swift in Sources */,
+				3C30B701535CDD261CD3C080 /* MainTabView.swift in Sources */,
+				0E790571A90BC6851B7B7E05 /* Match.swift in Sources */,
 				0B31E3778DA0D85C30EB5936 /* MatchMateApp.swift in Sources */,
+				E08A189ACA0C095C484CFB65 /* MatchesView.swift in Sources */,
 				7D86FA0A75047A4D9BDE28AB /* ProfileCardView.swift in Sources */,
+				BD7614F6E193BD90BB930220 /* ProfileView.swift in Sources */,
 				B43C82EB33EBE706D7EA1B81 /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
