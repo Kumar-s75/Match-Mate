@@ -2,13 +2,36 @@ import SwiftUI
 
 @main
 struct MatchMateApp: App {
-
-    @State private var appState = AppState()
-
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .environment(appState)
+        }
+    }
+}
+
+struct MainTabView: View {
+    var body: some View {
+        TabView {
+
+            DiscoveryView()
+                .tabItem {
+                    Label("Discover", systemImage: "sparkles")
+                }
+
+            MatchesView()
+                .tabItem {
+                    Label("Matches", systemImage: "heart.fill")
+                }
+
+            MessagesView()
+                .tabItem {
+                    Label("Messages", systemImage: "message.fill")
+                }
+
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person.fill")
+                }
         }
     }
 }

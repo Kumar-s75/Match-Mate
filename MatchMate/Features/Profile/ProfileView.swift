@@ -1,75 +1,32 @@
 import SwiftUI
 
 struct ProfileView: View {
-
     var body: some View {
         NavigationStack {
-            Form {
+            VStack(spacing: 20) {
 
-                Section {
-                    HStack {
-                        Spacer()
+                Image(systemName: "person.crop.circle.fill")
+                    .font(.system(size: 100))
+                    .foregroundStyle(.blue)
 
-                        VStack(spacing: 10) {
+                Text("My Profile")
+                    .font(.title)
+                    .fontWeight(.bold)
 
-                            Circle()
-                                .fill(
-                                    LinearGradient(
-                                        colors: [
-                                            .purple,
-                                            .blue
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
-                                .frame(
-                                    width: 100,
-                                    height: 100
-                                )
-                                .overlay {
-                                    Image(systemName: "person.fill")
-                                        .font(.system(size: 40))
-                                        .foregroundStyle(.white)
-                                }
+                Text("Complete your profile to get better matches.")
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
 
-                            Text("Kumar")
-                                .font(.title2)
-                                .fontWeight(.bold)
-
-                            Text("Software Engineer")
-                                .foregroundStyle(.secondary)
-                        }
-
-                        Spacer()
-                    }
-                    .padding(.vertical)
+                Button("Edit Profile") {
+                    print("Edit profile")
                 }
+                .buttonStyle(.borderedProminent)
 
-                Section("About") {
-                    LabeledContent(
-                        "Location",
-                        value: "India"
-                    )
-
-                    LabeledContent(
-                        "Interests",
-                        value: "Technology, Travel"
-                    )
-                }
-
-                Section("Preferences") {
-                    NavigationLink("Discovery Preferences") {
-                        Text("Preferences")
-                            .navigationTitle("Preferences")
-                    }
-                }
+                Spacer()
             }
+            .padding(.top, 40)
             .navigationTitle("Profile")
         }
     }
-}
-
-#Preview {
-    ProfileView()
 }

@@ -1,228 +1,214 @@
-//
-//  DiscoveryView.swift
-//  MatchMate
-//
-//  Created by Kumar Saurabh on 13/08/26.
-//
-
 import SwiftUI
 
 struct DiscoveryView: View {
-    @State private var profiles: [UserProfile] = [
+
+    private let profiles: [UserProfile] = [
         UserProfile(
-            name: "Riya",
-            age: 23,
-            location: "Bangalore",
-            bio: "Music lover, traveler and occasional photographer.",
-            interests: ["Music", "Travel", "Photography"],
-            compatibility: 84
+            name: "Priya",
+            age: 24,
+            location: "Delhi",
+            bio: "Love travelling, photography and discovering new places.",
+            interests: ["Travel", "Photography", "Music"],
+            compatibility: 92,
+            imageSystemName: "person.crop.circle.fill"
         ),
+
         UserProfile(
             name: "Ananya",
-            age: 24,
+            age: 23,
             location: "Mumbai",
-            bio: "Coffee addict, developer and weekend explorer.",
-            interests: ["Coffee", "Coding", "Travel"],
-            compatibility: 91
+            bio: "Coffee enthusiast who enjoys books, movies and weekend trips.",
+            interests: ["Coffee", "Books", "Movies"],
+            compatibility: 87,
+            imageSystemName: "person.crop.circle.fill"
         ),
+
         UserProfile(
-            name: "Meera",
-            age: 22,
-            location: "Delhi",
-            bio: "Bookworm who loves art, food and discovering new places.",
-            interests: ["Books", "Art", "Food"],
-            compatibility: 78
+            name: "Riya",
+            age: 25,
+            location: "Bangalore",
+            bio: "Software engineer, foodie and occasional trekker.",
+            interests: ["Technology", "Food", "Trekking"],
+            compatibility: 84,
+            imageSystemName: "person.crop.circle.fill"
+        ),
+
+        UserProfile(
+            name: "Sneha",
+            age: 24,
+            location: "Pune",
+            bio: "Designer who loves art, hiking and exploring new cafes.",
+            interests: ["Design", "Hiking", "Food"],
+            compatibility: 81,
+            imageSystemName: "person.crop.circle.fill"
         )
     ]
 
-    @State private var offset: CGSize = .zero
-    @State private var rotation: Double = 0
+    @State private var currentIndex = 0
+    @State private var dragOffset: CGSize = .zero
+    @State private var showMatch = false
+    @State private var matchedProfile: UserProfile?
+
+    private let swipeThreshold: CGFloat = 120
 
     var body: some View {
-        ZStack {
-            Color.black
-                .ignoresSafeArea()
+        NavigationStack {
+            VStack(spacing: 16) {
 
-            VStack(spacing: 20) {
-
-                // Header
-                HStack {
-                    Text("Discover")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-
-                    Spacer()
-
-                    Image(systemName: "slider.horizontal.3")
-                        .font(.title2)
-                        .foregroundStyle(.white)
-                }
-                .padding(.horizontal)
-                .padding(.top)
-
-                // Cards
                 ZStack {
-                    if profiles.isEmpty {
-                        EmptyStateView()
+                    if currentIndex + 1 < profiles.count {
+                        ProfileCardView(profile: profiles[currentIndex + 1])
+                            .scaleEffect(0.94)
+                            .offset(y: 8)
+                    }
+
+                    if currentIndex < profiles.count {
+                        ProfileCardView(profile: profiles[currentIndex])
+                            .offset(dragOffset)
+                            .rotationEffect(
+                                .degrees(Double(dragOffset.width / 20))
+                            )
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { value in
+                                        dragOffset = value.translation
+                                    }
+                                    .onEnded { value in
+                                        handleSwipe(value.translation)
+                                    }
+                            )
                     } else {
-                        ForEach(profiles.indices.reversed(), id: \.self) { index in
-                            ProfileCardView(profile: profiles[index])
-                                .offset(
-                                    index == profiles.count - 1
-                                    ? offset
-                                    : .zero
-                                )
-                                .rotationEffect(
-                                    .degrees(
-                                        index == profiles.count - 1
-                                        ? rotation
-                                        : 0
-                                    )
-                                )
-                                .scaleEffect(
-                                    index == profiles.count - 1
-                                    ? 1
-                                    : 0.95
-                                )
-                                .gesture(
-                                    index == profiles.count - 1
-                                    ? dragGesture
-                                    : nil
-                                )
-                                .animation(
-                                    .spring(),
-                                    value: offset
-                                )
-                        }
+                        emptyState
                     }
                 }
                 .padding(.horizontal)
 
-                // Action buttons
-                HStack(spacing: 35) {
-
-                    ActionButton(
-                        icon: "xmark",
-                        size: 60
-                    ) {
-                        swipeLeft()
-                    }
-
-                    ActionButton(
-                        icon: "heart.fill",
-                        size: 70
-                    ) {
-                        swipeRight()
-                    }
+                if currentIndex < profiles.count {
+                    actionButtons
                 }
-                .padding(.bottom, 20)
+
+                Spacer()
+            }
+            .padding(.top)
+            .navigationTitle("Discover")
+            .alert(
+                "It's a Match! 🎉",
+                isPresented: $showMatch
+            ) {
+                Button("Keep Discovering") {
+                    showMatch = false
+                }
+            } message: {
+                if let matchedProfile {
+                    Text("You and \(matchedProfile.name) liked each other!")
+                }
             }
         }
     }
 
-    // MARK: - Swipe Gesture
+    // MARK: - Action Buttons
 
-    private var dragGesture: some Gesture {
-        DragGesture()
-            .onChanged { value in
-                offset = value.translation
+    private var actionButtons: some View {
+        HStack(spacing: 40) {
 
-                rotation = Double(
-                    value.translation.width / 20
-                )
+            Button {
+                swipeLeft()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.title2.bold())
+                    .foregroundStyle(.red)
+                    .frame(width: 64, height: 64)
+                    .background(.thinMaterial)
+                    .clipShape(Circle())
+                    .shadow(radius: 4)
             }
-            .onEnded { value in
 
-                let horizontalMovement =
-                    value.translation.width
-
-                if horizontalMovement > 120 {
-                    swipeRight()
-                } else if horizontalMovement < -120 {
-                    swipeLeft()
-                } else {
-                    withAnimation(.spring()) {
-                        offset = .zero
-                        rotation = 0
-                    }
-                }
+            Button {
+                swipeRight()
+            } label: {
+                Image(systemName: "heart.fill")
+                    .font(.title2.bold())
+                    .foregroundStyle(.pink)
+                    .frame(width: 64, height: 64)
+                    .background(.thinMaterial)
+                    .clipShape(Circle())
+                    .shadow(radius: 4)
             }
+        }
     }
 
-    // MARK: - Swipe Actions
+    // MARK: - Empty State
+
+    private var emptyState: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "sparkles")
+                .font(.system(size: 60))
+                .foregroundStyle(.purple)
+
+            Text("You've seen everyone!")
+                .font(.title2)
+                .fontWeight(.bold)
+
+            Text("Check back later for new matches.")
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 450)
+    }
+
+    // MARK: - Swipe Handling
+
+    private func handleSwipe(_ translation: CGSize) {
+
+        if translation.width > swipeThreshold {
+            swipeRight()
+        } else if translation.width < -swipeThreshold {
+            swipeLeft()
+        } else {
+            withAnimation(.spring()) {
+                dragOffset = .zero
+            }
+        }
+    }
 
     private func swipeRight() {
-        guard !profiles.isEmpty else { return }
 
-        withAnimation(.easeIn(duration: 0.3)) {
-            offset = CGSize(width: 500, height: 0)
-            rotation = 20
+        guard currentIndex < profiles.count else {
+            return
         }
 
-        removeTopCard()
+        let profile = profiles[currentIndex]
+
+        withAnimation(.easeIn(duration: 0.25)) {
+            dragOffset = CGSize(width: 600, height: 0)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            matchedProfile = profile
+            currentIndex += 1
+            dragOffset = .zero
+
+            // Demo match logic.
+            // Later this will come from the backend.
+            if profile.compatibility >= 90 {
+                showMatch = true
+            }
+        }
     }
 
     private func swipeLeft() {
-        guard !profiles.isEmpty else { return }
 
-        withAnimation(.easeIn(duration: 0.3)) {
-            offset = CGSize(width: -500, height: 0)
-            rotation = -20
+        guard currentIndex < profiles.count else {
+            return
         }
 
-        removeTopCard()
-    }
+        withAnimation(.easeIn(duration: 0.25)) {
+            dragOffset = CGSize(width: -600, height: 0)
+        }
 
-    private func removeTopCard() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            profiles.removeLast()
-            offset = .zero
-            rotation = 0
+            currentIndex += 1
+            dragOffset = .zero
         }
     }
-}
-
-// MARK: - Action Button
-
-struct ActionButton: View {
-    let icon: String
-    let size: CGFloat
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Image(systemName: icon)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundStyle(.white)
-                .frame(width: size, height: size)
-                .background(.ultraThinMaterial)
-                .clipShape(Circle())
-        }
-    }
-}
-
-// MARK: - Empty State
-
-struct EmptyStateView: View {
-    var body: some View {
-        VStack(spacing: 15) {
-            Image(systemName: "person.2.slash")
-                .font(.system(size: 50))
-                .foregroundStyle(.gray)
-
-            Text("No more profiles")
-                .font(.title2)
-                .fontWeight(.semibold)
-                .foregroundStyle(.white)
-
-            Text("Check back later for new matches.")
-                .foregroundStyle(.gray)
-        }
-    }
-}
-
-#Preview {
-    DiscoveryView()
 }
