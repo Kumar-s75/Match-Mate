@@ -2,8 +2,7 @@ import SwiftUI
 
 struct DiscoveryView: View {
 
-    @StateObject private var viewModel =
-        DiscoveryViewModel()
+    @StateObject private var viewModel = DiscoveryViewModel()
 
     var body: some View {
 
@@ -11,22 +10,52 @@ struct DiscoveryView: View {
 
             VStack(spacing: 12) {
 
-                cardStack
+                // MARK: - Main Content
 
-                if viewModel.hasMoreProfiles {
+                if viewModel.isLoading {
+
+                    loadingView
+
+                } else if let errorMessage = viewModel.errorMessage {
+
+                    errorView(message: errorMessage)
+
+                } else {
+
+                    cardStack
+
+                }
+
+                // MARK: - Action Buttons
+
+                if !viewModel.isLoading &&
+                    viewModel.errorMessage == nil &&
+                    viewModel.hasMoreProfiles {
+
                     actionButtons
                 }
             }
             .padding(.horizontal, 12)
             .padding(.top, 8)
             .navigationTitle("Discover")
+
+            // MARK: - Load Profiles
+
+            .task {
+                viewModel.loadProfiles()
+            }
+
+            // MARK: - Match Alert
+
             .alert(
                 "It's a Match! 🎉",
                 isPresented: $viewModel.showMatch
             ) {
+
                 Button("Keep Discovering") {
                     viewModel.showMatch = false
                 }
+
             } message: {
 
                 if let profile = viewModel.matchedProfile {
@@ -45,16 +74,18 @@ struct DiscoveryView: View {
 
         ZStack {
 
-            // Next card
+            // Next profile underneath
 
             if let profile = viewModel.nextProfile {
 
-                ProfileCardView(profile: profile)
-                    .scaleEffect(0.94)
-                    .offset(y: 10)
+                ProfileCardView(
+                    profile: profile
+                )
+                .scaleEffect(0.94)
+                .offset(y: 10)
             }
 
-            // Current card
+            // Current profile
 
             if let profile = viewModel.currentProfile {
 
@@ -66,7 +97,9 @@ struct DiscoveryView: View {
 
                     swipeIndicator
                 }
-                .offset(viewModel.dragOffset)
+                .offset(
+                    viewModel.dragOffset
+                )
                 .rotationEffect(
                     .degrees(
                         Double(
@@ -103,11 +136,75 @@ struct DiscoveryView: View {
         )
     }
 
-    // MARK: - Swipe Indicator
+    // MARK: - Loading View
+
+    private var loadingView: some View {
+
+        VStack(spacing: 18) {
+
+            ProgressView()
+                .scaleEffect(1.4)
+
+            Text("Finding matches...")
+                .font(.headline)
+
+            Text(
+                "Looking for people who might be a good match for you."
+            )
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
+        }
+        .frame(
+            maxWidth: .infinity,
+            maxHeight: .infinity
+        )
+    }
+
+    // MARK: - Error View
+
+    private func errorView(
+        message: String
+    ) -> some View {
+
+        VStack(spacing: 18) {
+
+            Image(
+                systemName: "exclamationmark.triangle"
+            )
+            .font(
+                .system(size: 50)
+            )
+            .foregroundStyle(.orange)
+
+            Text("Something went wrong")
+                .font(.title3)
+                .fontWeight(.bold)
+
+            Text(message)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+
+            Button("Try Again") {
+
+                viewModel.loadProfiles()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .frame(
+            maxWidth: .infinity,
+            maxHeight: .infinity
+        )
+    }
+
+    // MARK: - Swipe Indicators
 
     private var swipeIndicator: some View {
 
         ZStack {
+
+            // LIKE
 
             if viewModel.dragOffset.width > 20 {
 
@@ -122,6 +219,7 @@ struct DiscoveryView: View {
                     .padding(.horizontal, 18)
                     .padding(.vertical, 8)
                     .overlay(
+
                         RoundedRectangle(
                             cornerRadius: 12
                         )
@@ -147,6 +245,8 @@ struct DiscoveryView: View {
                     )
             }
 
+            // PASS
+
             if viewModel.dragOffset.width < -20 {
 
                 Text("PASS")
@@ -160,6 +260,7 @@ struct DiscoveryView: View {
                     .padding(.horizontal, 18)
                     .padding(.vertical, 8)
                     .overlay(
+
                         RoundedRectangle(
                             cornerRadius: 12
                         )
@@ -189,11 +290,13 @@ struct DiscoveryView: View {
         }
     }
 
-    // MARK: - Buttons
+    // MARK: - Action Buttons
 
     private var actionButtons: some View {
 
         HStack(spacing: 45) {
+
+            // PASS BUTTON
 
             Button {
 
@@ -201,25 +304,29 @@ struct DiscoveryView: View {
 
             } label: {
 
-                Image(systemName: "xmark")
-                    .font(
-                        .system(
-                            size: 24,
-                            weight: .bold
-                        )
+                Image(
+                    systemName: "xmark"
+                )
+                .font(
+                    .system(
+                        size: 24,
+                        weight: .bold
                     )
-                    .foregroundStyle(.red)
-                    .frame(
-                        width: 68,
-                        height: 68
-                    )
-                    .background(.white)
-                    .clipShape(Circle())
-                    .shadow(
-                        color: .black.opacity(0.15),
-                        radius: 6
-                    )
+                )
+                .foregroundStyle(.red)
+                .frame(
+                    width: 68,
+                    height: 68
+                )
+                .background(.white)
+                .clipShape(Circle())
+                .shadow(
+                    color: .black.opacity(0.15),
+                    radius: 6
+                )
             }
+
+            // LIKE BUTTON
 
             Button {
 
@@ -227,24 +334,26 @@ struct DiscoveryView: View {
 
             } label: {
 
-                Image(systemName: "heart.fill")
-                    .font(
-                        .system(
-                            size: 28,
-                            weight: .bold
-                        )
+                Image(
+                    systemName: "heart.fill"
+                )
+                .font(
+                    .system(
+                        size: 28,
+                        weight: .bold
                     )
-                    .foregroundStyle(.pink)
-                    .frame(
-                        width: 76,
-                        height: 76
-                    )
-                    .background(.white)
-                    .clipShape(Circle())
-                    .shadow(
-                        color: .black.opacity(0.15),
-                        radius: 6
-                    )
+                )
+                .foregroundStyle(.pink)
+                .frame(
+                    width: 76,
+                    height: 76
+                )
+                .background(.white)
+                .clipShape(Circle())
+                .shadow(
+                    color: .black.opacity(0.15),
+                    radius: 6
+                )
             }
         }
         .padding(.vertical, 8)
@@ -254,13 +363,15 @@ struct DiscoveryView: View {
 
     private var emptyState: some View {
 
-        VStack(spacing: 16) {
+        VStack(spacing: 18) {
 
-            Image(systemName: "sparkles")
-                .font(
-                    .system(size: 60)
-                )
-                .foregroundStyle(.purple)
+            Image(
+                systemName: "sparkles"
+            )
+            .font(
+                .system(size: 60)
+            )
+            .foregroundStyle(.purple)
 
             Text("You've seen everyone!")
                 .font(.title2)
@@ -275,7 +386,13 @@ struct DiscoveryView: View {
 
                 viewModel.reset()
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(
+                .borderedProminent
+            )
         }
+        .frame(
+            maxWidth: .infinity,
+            maxHeight: .infinity
+        )
     }
 }

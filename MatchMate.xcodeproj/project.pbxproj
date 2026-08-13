@@ -11,8 +11,10 @@
 		0E790571A90BC6851B7B7E05 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0471BE09AA21D8474CECB /* Match.swift */; };
 		3C30B701535CDD261CD3C080 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E06B181F990C4C444F1185 /* MainTabView.swift */; };
 		46E07F23AA970D7DFF482BB8 /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */; };
+		7AB5F9712B0416387229C5F7 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED506452D9AA5B26207645 /* ProfileRepository.swift */; };
 		7D86FA0A75047A4D9BDE28AB /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EBD2DD67290D5817E86 /* ProfileCardView.swift */; };
 		86256E41ABF6F7D35B91D042 /* DiscoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A227B2BD5646926DA51A2D /* DiscoveryViewModel.swift */; };
+		A2624559E8FAF497793ABD5D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E2192FE1219EC9246EBE7 /* APIService.swift */; };
 		A7A1A92EBE69755E2CAC3A71 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CBC3CAB26A321023699D1 /* MessagesView.swift */; };
 		B43C82EB33EBE706D7EA1B81 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EFB6F7AD0F5D4131F4BDEB /* UserProfile.swift */; };
 		BD7614F6E193BD90BB930220 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CE2A42EBA66F9969018F /* ProfileView.swift */; };
@@ -22,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateApp.swift; sourceTree = "<group>"; };
+		13ED506452D9AA5B26207645 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		41A227B2BD5646926DA51A2D /* DiscoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewModel.swift; sourceTree = "<group>"; };
 		48E06B181F990C4C444F1185 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		541CBC3CAB26A321023699D1 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
@@ -29,6 +32,7 @@
 		6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		8289CE2A42EBA66F9969018F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		82E86B10F31B56529CE79163 /* MatchMate.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MatchMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		848E2192FE1219EC9246EBE7 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		886ACBB65AC551C52290F2D8 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 		C065AF649F480620643E49CE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		CFA0471BE09AA21D8474CECB /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
@@ -41,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				C065AF649F480620643E49CE /* AppState.swift */,
+				47D9DD43D93907CDD655599A /* Networking */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -51,6 +56,15 @@
 				ADA307DDDE0D2D904EC01D22 /* MatchMate */,
 				543AFFAEFF98F0A8B52C9FA4 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		47D9DD43D93907CDD655599A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				848E2192FE1219EC9246EBE7 /* APIService.swift */,
+				13ED506452D9AA5B26207645 /* ProfileRepository.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		5320BA6A3BD7551674F2859C /* Discovery */ = {
@@ -183,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2624559E8FAF497793ABD5D /* APIService.swift in Sources */,
 				FD053E6AB1BDD1B1770B352D /* AppState.swift in Sources */,
 				46E07F23AA970D7DFF482BB8 /* DiscoveryView.swift in Sources */,
 				86256E41ABF6F7D35B91D042 /* DiscoveryViewModel.swift in Sources */,
@@ -192,6 +207,7 @@
 				E08A189ACA0C095C484CFB65 /* MatchesView.swift in Sources */,
 				A7A1A92EBE69755E2CAC3A71 /* MessagesView.swift in Sources */,
 				7D86FA0A75047A4D9BDE28AB /* ProfileCardView.swift in Sources */,
+				7AB5F9712B0416387229C5F7 /* ProfileRepository.swift in Sources */,
 				BD7614F6E193BD90BB930220 /* ProfileView.swift in Sources */,
 				B43C82EB33EBE706D7EA1B81 /* UserProfile.swift in Sources */,
 			);
