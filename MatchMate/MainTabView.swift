@@ -2,9 +2,6 @@ import SwiftUI
 
 struct MainTabView: View {
 
-    @Environment(AppState.self)
-    private var appState
-
     var body: some View {
         TabView {
 
@@ -12,19 +9,25 @@ struct MainTabView: View {
                 .tabItem {
                     Label(
                         "Discover",
+                        systemImage: "sparkles"
+                    )
+                }
+
+            MatchesView()
+                .tabItem {
+                    Label(
+                        "Matches",
                         systemImage: "heart.fill"
                     )
                 }
 
-            MatchesView(
-                matches: appState.matches
-            )
-            .tabItem {
-                Label(
-                    "Matches",
-                    systemImage: "message.fill"
-                )
-            }
+            MessagesView()
+                .tabItem {
+                    Label(
+                        "Messages",
+                        systemImage: "message.fill"
+                    )
+                }
 
             ProfileView()
                 .tabItem {

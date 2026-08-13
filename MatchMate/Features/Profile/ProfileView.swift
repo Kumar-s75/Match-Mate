@@ -1,32 +1,121 @@
 import SwiftUI
 
 struct ProfileView: View {
+
     var body: some View {
+
         NavigationStack {
-            VStack(spacing: 20) {
 
-                Image(systemName: "person.crop.circle.fill")
-                    .font(.system(size: 100))
-                    .foregroundStyle(.blue)
+            ScrollView {
 
-                Text("My Profile")
-                    .font(.title)
-                    .fontWeight(.bold)
+                VStack(spacing: 20) {
 
-                Text("Complete your profile to get better matches.")
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
+                    Image(
+                        systemName:
+                            "person.crop.circle.fill"
+                    )
+                    .font(
+                        .system(size: 110)
+                    )
+                    .foregroundStyle(.purple)
 
-                Button("Edit Profile") {
-                    print("Edit profile")
+                    Text("Kumar")
+                        .font(.title)
+                        .fontWeight(.bold)
+
+                    Text("Software Engineer")
+                        .foregroundStyle(.secondary)
+
+                    Divider()
+
+                    VStack(
+                        alignment: .leading,
+                        spacing: 12
+                    ) {
+
+                        Text("About Me")
+                            .font(.headline)
+
+                        Text(
+                            "Building software, exploring technology and meeting interesting people."
+                        )
+                        .foregroundStyle(.secondary)
+                    }
+                    .frame(
+                        maxWidth: .infinity,
+                        alignment: .leading
+                    )
+
+                    VStack(
+                        alignment: .leading,
+                        spacing: 12
+                    ) {
+
+                        Text("Interests")
+                            .font(.headline)
+
+                        HStack {
+
+                            InterestTag(
+                                title: "Technology"
+                            )
+
+                            InterestTag(
+                                title: "Travel"
+                            )
+
+                            InterestTag(
+                                title: "Music"
+                            )
+                        }
+                    }
+                    .frame(
+                        maxWidth: .infinity,
+                        alignment: .leading
+                    )
+
+                    Button("Edit Profile") {
+
+                        print(
+                            "Edit profile tapped"
+                        )
+                    }
+                    .buttonStyle(
+                        .borderedProminent
+                    )
                 }
-                .buttonStyle(.borderedProminent)
-
-                Spacer()
+                .padding()
             }
-            .padding(.top, 40)
+
             .navigationTitle("Profile")
         }
+    }
+}
+
+// MARK: - Interest Tag
+
+struct InterestTag: View {
+
+    let title: String
+
+    var body: some View {
+
+        Text(title)
+            .font(.caption)
+            .fontWeight(.medium)
+            .padding(
+                .horizontal,
+                10
+            )
+            .padding(
+                .vertical,
+                7
+            )
+            .background(
+                .purple.opacity(0.1)
+            )
+            .clipShape(
+                Capsule()
+            )
     }
 }

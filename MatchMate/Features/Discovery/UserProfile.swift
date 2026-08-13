@@ -2,6 +2,7 @@ import Foundation
 
 struct UserProfile: Identifiable {
     let id = UUID()
+
     let name: String
     let age: Int
     let location: String
