@@ -8,148 +8,217 @@
 import SwiftUI
 
 struct DiscoveryView: View {
-
     @State private var profiles: [UserProfile] = [
-        UserProfile(
-            name: "Priya",
-            age: 24,
-            location: "New Delhi",
-            bio: "Love exploring new places, photography and discovering great food.",
-            interests: ["Photography", "Travel", "Music"],
-            compatibility: 92
-        ),
-
-        UserProfile(
-            name: "Ananya",
-            age: 25,
-            location: "Mumbai",
-            bio: "Software engineer who enjoys books, coffee and weekend adventures.",
-            interests: ["Books", "Coffee", "Coding"],
-            compatibility: 87
-        ),
-
         UserProfile(
             name: "Riya",
             age: 23,
             location: "Bangalore",
             bio: "Music lover, traveler and occasional photographer.",
-            interests: ["Music", "Travel", "Movies"],
+            interests: ["Music", "Travel", "Photography"],
             compatibility: 84
+        ),
+        UserProfile(
+            name: "Ananya",
+            age: 24,
+            location: "Mumbai",
+            bio: "Coffee addict, developer and weekend explorer.",
+            interests: ["Coffee", "Coding", "Travel"],
+            compatibility: 91
+        ),
+        UserProfile(
+            name: "Meera",
+            age: 22,
+            location: "Delhi",
+            bio: "Bookworm who loves art, food and discovering new places.",
+            interests: ["Books", "Art", "Food"],
+            compatibility: 78
         )
     ]
 
-    @State private var cardOffset: CGSize = .zero
+    @State private var offset: CGSize = .zero
+    @State private var rotation: Double = 0
 
     var body: some View {
-        NavigationStack {
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
+
             VStack(spacing: 20) {
 
-                if let profile = profiles.last {
+                // Header
+                HStack {
+                    Text("Discover")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
 
-                    ProfileCardView(profile: profile)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 560)
-                        .offset(x: cardOffset.width)
-                        .rotationEffect(
-                            .degrees(Double(cardOffset.width / 20))
-                        )
-                        .gesture(
-                            DragGesture()
-                                .onChanged { value in
-                                    cardOffset = value.translation
-                                }
-                                .onEnded { value in
-                                    handleSwipe(value.translation)
-                                }
-                        )
+                    Spacer()
 
-                } else {
+                    Image(systemName: "slider.horizontal.3")
+                        .font(.title2)
+                        .foregroundStyle(.white)
+                }
+                .padding(.horizontal)
+                .padding(.top)
 
-                    VStack(spacing: 16) {
-                        Image(systemName: "heart.circle.fill")
-                            .font(.system(size: 70))
-
-                        Text("No more profiles")
-                            .font(.title2)
-                            .fontWeight(.bold)
-
-                        Text("Check back later for new matches.")
-                            .foregroundStyle(.secondary)
+                // Cards
+                ZStack {
+                    if profiles.isEmpty {
+                        EmptyStateView()
+                    } else {
+                        ForEach(profiles.indices.reversed(), id: \.self) { index in
+                            ProfileCardView(profile: profiles[index])
+                                .offset(
+                                    index == profiles.count - 1
+                                    ? offset
+                                    : .zero
+                                )
+                                .rotationEffect(
+                                    .degrees(
+                                        index == profiles.count - 1
+                                        ? rotation
+                                        : 0
+                                    )
+                                )
+                                .scaleEffect(
+                                    index == profiles.count - 1
+                                    ? 1
+                                    : 0.95
+                                )
+                                .gesture(
+                                    index == profiles.count - 1
+                                    ? dragGesture
+                                    : nil
+                                )
+                                .animation(
+                                    .spring(),
+                                    value: offset
+                                )
+                        }
                     }
                 }
+                .padding(.horizontal)
 
-                HStack(spacing: 50) {
+                // Action buttons
+                HStack(spacing: 35) {
 
-                    Button {
+                    ActionButton(
+                        icon: "xmark",
+                        size: 60
+                    ) {
                         swipeLeft()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(.title)
-                            .foregroundStyle(.red)
-                            .frame(width: 64, height: 64)
-                            .background(.white)
-                            .clipShape(Circle())
-                            .shadow(radius: 5)
                     }
 
-                    Button {
+                    ActionButton(
+                        icon: "heart.fill",
+                        size: 70
+                    ) {
                         swipeRight()
-                    } label: {
-                        Image(systemName: "heart.fill")
-                            .font(.title)
-                            .foregroundStyle(.pink)
-                            .frame(width: 64, height: 64)
-                            .background(.white)
-                            .clipShape(Circle())
-                            .shadow(radius: 5)
                     }
                 }
+                .padding(.bottom, 20)
             }
-            .padding()
-            .navigationTitle("Discover")
-            .background(Color(.systemGroupedBackground))
         }
     }
 
-    private func handleSwipe(_ translation: CGSize) {
+    // MARK: - Swipe Gesture
 
-        let threshold: CGFloat = 120
+    private var dragGesture: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                offset = value.translation
 
-        if translation.width > threshold {
-            swipeRight()
-        } else if translation.width < -threshold {
-            swipeLeft()
-        } else {
-            cardOffset = .zero
+                rotation = Double(
+                    value.translation.width / 20
+                )
+            }
+            .onEnded { value in
+
+                let horizontalMovement =
+                    value.translation.width
+
+                if horizontalMovement > 120 {
+                    swipeRight()
+                } else if horizontalMovement < -120 {
+                    swipeLeft()
+                } else {
+                    withAnimation(.spring()) {
+                        offset = .zero
+                        rotation = 0
+                    }
+                }
+            }
+    }
+
+    // MARK: - Swipe Actions
+
+    private func swipeRight() {
+        guard !profiles.isEmpty else { return }
+
+        withAnimation(.easeIn(duration: 0.3)) {
+            offset = CGSize(width: 500, height: 0)
+            rotation = 20
         }
+
+        removeTopCard()
     }
 
     private func swipeLeft() {
+        guard !profiles.isEmpty else { return }
 
-        withAnimation(.easeIn(duration: 0.25)) {
-            cardOffset = CGSize(width: -500, height: 0)
+        withAnimation(.easeIn(duration: 0.3)) {
+            offset = CGSize(width: -500, height: 0)
+            rotation = -20
         }
 
-        removeCurrentProfile()
+        removeTopCard()
     }
 
-    private func swipeRight() {
-
-        withAnimation(.easeIn(duration: 0.25)) {
-            cardOffset = CGSize(width: 500, height: 0)
-        }
-
-        removeCurrentProfile()
-    }
-
-    private func removeCurrentProfile() {
-
+    private func removeTopCard() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            profiles.removeLast()
+            offset = .zero
+            rotation = 0
+        }
+    }
+}
 
-            if !profiles.isEmpty {
-                profiles.removeLast()
-                cardOffset = .zero
-            }
+// MARK: - Action Button
+
+struct ActionButton: View {
+    let icon: String
+    let size: CGFloat
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: icon)
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+                .frame(width: size, height: size)
+                .background(.ultraThinMaterial)
+                .clipShape(Circle())
+        }
+    }
+}
+
+// MARK: - Empty State
+
+struct EmptyStateView: View {
+    var body: some View {
+        VStack(spacing: 15) {
+            Image(systemName: "person.2.slash")
+                .font(.system(size: 50))
+                .foregroundStyle(.gray)
+
+            Text("No more profiles")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+
+            Text("Check back later for new matches.")
+                .foregroundStyle(.gray)
         }
     }
 }

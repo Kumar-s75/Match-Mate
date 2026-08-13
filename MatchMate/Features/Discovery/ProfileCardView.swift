@@ -11,80 +11,91 @@ struct ProfileCardView: View {
     let profile: UserProfile
 
     var body: some View {
-        ZStack(alignment: .bottom) {
+        VStack(alignment: .leading, spacing: 0) {
 
-            RoundedRectangle(cornerRadius: 28)
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            .purple.opacity(0.8),
-                            .blue.opacity(0.8)
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+            // Profile image placeholder
+            ZStack(alignment: .topTrailing) {
+                LinearGradient(
+                    colors: [
+                        Color.purple,
+                        Color.blue
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
                 )
 
-            VStack {
-                Spacer()
+                Text("\(profile.compatibility)%")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(.green)
+                    .clipShape(Capsule())
+                    .padding()
+            }
+            .frame(height: 360)
 
-                VStack(alignment: .leading, spacing: 12) {
+            // Profile information
+            VStack(alignment: .leading, spacing: 10) {
 
-                    HStack(alignment: .bottom) {
-                        Text("\(profile.name), \(profile.age)")
-                            .font(.system(size: 30, weight: .bold))
-                            .foregroundStyle(.white)
+                HStack {
+                    Text("\(profile.name), \(profile.age)")
+                        .font(.title)
+                        .fontWeight(.bold)
 
-                        Spacer()
+                    Spacer()
+                }
 
-                        Text("\(profile.compatibility)%")
-                            .font(.headline)
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 8)
-                            .background(.green.opacity(0.8))
-                            .clipShape(Capsule())
-                    }
+                Label(
+                    profile.location,
+                    systemImage: "location.fill"
+                )
+                .foregroundStyle(.secondary)
 
-                    Text(profile.location)
-                        .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.9))
+                Text(profile.bio)
+                    .font(.body)
+                    .foregroundStyle(.secondary)
 
-                    Text(profile.bio)
-                        .foregroundStyle(.white.opacity(0.9))
-                        .lineLimit(2)
-
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(profile.interests, id: \.self) { interest in
-                                Text(interest)
-                                    .font(.caption)
-                                    .foregroundStyle(.white)
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 7)
-                                    .background(.white.opacity(0.2))
-                                    .clipShape(Capsule())
-                            }
+                // Interests
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(profile.interests, id: \.self) { interest in
+                            Text(interest)
+                                .font(.caption)
+                                .fontWeight(.medium)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 7)
+                                .background(Color.gray.opacity(0.15))
+                                .clipShape(Capsule())
                         }
                     }
                 }
-                .padding(24)
             }
+            .padding()
+            .background(.white)
         }
-        .clipShape(RoundedRectangle(cornerRadius: 28))
-        .shadow(radius: 10)
+        .clipShape(RoundedRectangle(cornerRadius: 25))
+        .shadow(
+            radius: 15,
+            y: 8
+        )
     }
 }
 
 #Preview {
     ProfileCardView(
         profile: UserProfile(
-            name: "Priya",
-            age: 24,
-            location: "New Delhi",
-            bio: "Love travel, photography and discovering new places.",
-            interests: ["Travel", "Photography", "Music"],
-            compatibility: 92
+            name: "Riya",
+            age: 23,
+            location: "Bangalore",
+            bio: "Music lover, traveler and occasional photographer.",
+            interests: [
+                "Music",
+                "Travel",
+                "Photography"
+            ],
+            compatibility: 84
         )
     )
     .padding()
