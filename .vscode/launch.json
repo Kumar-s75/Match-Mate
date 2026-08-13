@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Matchmate}",
+            "name": "Debug Matchmate",
+            "target": "Matchmate",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug Matchmate"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Matchmate}",
+            "name": "Release Matchmate",
+            "target": "Matchmate",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release Matchmate"
+        }
+    ]
+}
