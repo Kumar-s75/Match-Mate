@@ -12,6 +12,7 @@
 		3C30B701535CDD261CD3C080 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E06B181F990C4C444F1185 /* MainTabView.swift */; };
 		46E07F23AA970D7DFF482BB8 /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */; };
 		7D86FA0A75047A4D9BDE28AB /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EBD2DD67290D5817E86 /* ProfileCardView.swift */; };
+		A7A1A92EBE69755E2CAC3A71 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CBC3CAB26A321023699D1 /* MessagesView.swift */; };
 		B43C82EB33EBE706D7EA1B81 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EFB6F7AD0F5D4131F4BDEB /* UserProfile.swift */; };
 		BD7614F6E193BD90BB930220 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CE2A42EBA66F9969018F /* ProfileView.swift */; };
 		E08A189ACA0C095C484CFB65 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886ACBB65AC551C52290F2D8 /* MatchesView.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateApp.swift; sourceTree = "<group>"; };
 		48E06B181F990C4C444F1185 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		541CBC3CAB26A321023699D1 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		571D6A584E07102FED238558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		8289CE2A42EBA66F9969018F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -70,11 +72,20 @@
 		8A0D02FBCDF98A321CC2D6BC /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AA7C99B9CBE9DB7613DE3684 /* Chat */,
 				5320BA6A3BD7551674F2859C /* Discovery */,
 				AE7D36E349DFF778DC6E0E4A /* Matches */,
 				B56362189E8DFB1A5E199BF4 /* Profile */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		AA7C99B9CBE9DB7613DE3684 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				541CBC3CAB26A321023699D1 /* MessagesView.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		ADA307DDDE0D2D904EC01D22 /* MatchMate */ = {
@@ -167,6 +178,7 @@
 				0E790571A90BC6851B7B7E05 /* Match.swift in Sources */,
 				0B31E3778DA0D85C30EB5936 /* MatchMateApp.swift in Sources */,
 				E08A189ACA0C095C484CFB65 /* MatchesView.swift in Sources */,
+				A7A1A92EBE69755E2CAC3A71 /* MessagesView.swift in Sources */,
 				7D86FA0A75047A4D9BDE28AB /* ProfileCardView.swift in Sources */,
 				BD7614F6E193BD90BB930220 /* ProfileView.swift in Sources */,
 				B43C82EB33EBE706D7EA1B81 /* UserProfile.swift in Sources */,
