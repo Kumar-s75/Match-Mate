@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0B31E3778DA0D85C30EB5936 /* MatchMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */; };
-		BBBD70DE302D49E9008E14FF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBD70DD302D49E9008E14FF /* UserProfile.swift */; };
-		BBBD70E0302D4A3B008E14FF /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBD70DF302D4A3B008E14FF /* ProfileCardView.swift */; };
-		BBBD70E2302D4A79008E14FF /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBD70E1302D4A79008E14FF /* DiscoveryView.swift */; };
+		46E07F23AA970D7DFF482BB8 /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */; };
+		7D86FA0A75047A4D9BDE28AB /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1199EBD2DD67290D5817E86 /* ProfileCardView.swift */; };
+		B43C82EB33EBE706D7EA1B81 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EFB6F7AD0F5D4131F4BDEB /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateApp.swift; sourceTree = "<group>"; };
+		571D6A584E07102FED238558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		82E86B10F31B56529CE79163 /* MatchMate.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MatchMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBBD70DD302D49E9008E14FF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		BBBD70DF302D4A3B008E14FF /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
-		BBBD70E1302D4A79008E14FF /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
+		D4EFB6F7AD0F5D4131F4BDEB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F1199EBD2DD67290D5817E86 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -30,6 +31,16 @@
 			);
 			sourceTree = "<group>";
 		};
+		5320BA6A3BD7551674F2859C /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				6C63B0B625DF2A021CB98A12 /* DiscoveryView.swift */,
+				F1199EBD2DD67290D5817E86 /* ProfileCardView.swift */,
+				D4EFB6F7AD0F5D4131F4BDEB /* UserProfile.swift */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
 		543AFFAEFF98F0A8B52C9FA4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -38,31 +49,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ADA307DDDE0D2D904EC01D22 /* MatchMate */ = {
+		8A0D02FBCDF98A321CC2D6BC /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				BBBD70DB302D497C008E14FF /* Features */,
-				0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */,
-			);
-			path = MatchMate;
-			sourceTree = "<group>";
-		};
-		BBBD70DB302D497C008E14FF /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				BBBD70DC302D499D008E14FF /* Discovery */,
+				5320BA6A3BD7551674F2859C /* Discovery */,
 			);
 			path = Features;
 			sourceTree = "<group>";
 		};
-		BBBD70DC302D499D008E14FF /* Discovery */ = {
+		ADA307DDDE0D2D904EC01D22 /* MatchMate */ = {
 			isa = PBXGroup;
 			children = (
-				BBBD70DD302D49E9008E14FF /* UserProfile.swift */,
-				BBBD70DF302D4A3B008E14FF /* ProfileCardView.swift */,
-				BBBD70E1302D4A79008E14FF /* DiscoveryView.swift */,
+				571D6A584E07102FED238558 /* Info.plist */,
+				0E79DF398B0368DE9D3AF285 /* MatchMateApp.swift */,
+				8A0D02FBCDF98A321CC2D6BC /* Features */,
 			);
-			path = Discovery;
+			path = MatchMate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +95,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = D3F239D8D7E73519C6E0738A /* Build configuration list for PBXProject "MatchMate" */;
 			developmentRegion = en;
@@ -118,10 +122,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBBD70DE302D49E9008E14FF /* UserProfile.swift in Sources */,
-				BBBD70E2302D4A79008E14FF /* DiscoveryView.swift in Sources */,
-				BBBD70E0302D4A3B008E14FF /* ProfileCardView.swift in Sources */,
+				46E07F23AA970D7DFF482BB8 /* DiscoveryView.swift in Sources */,
 				0B31E3778DA0D85C30EB5936 /* MatchMateApp.swift in Sources */,
+				7D86FA0A75047A4D9BDE28AB /* ProfileCardView.swift in Sources */,
+				B43C82EB33EBE706D7EA1B81 /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +256,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = MatchMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -268,6 +273,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = MatchMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

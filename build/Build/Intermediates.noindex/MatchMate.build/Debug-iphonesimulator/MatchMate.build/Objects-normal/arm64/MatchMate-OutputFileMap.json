@@ -1,0 +1,49 @@
+{
+  "" : {
+    "diagnostics" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMate-primary.dia",
+    "emit-module-dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMate-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMate-primary-emit-module.dia",
+    "pch" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMate-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMate-primary.swiftdeps"
+  },
+  "/Users/kumarsaurabh/Desktop/Matchmate/MatchMate/Features/Discovery/DiscoveryView.swift" : {
+    "const-values" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/DiscoveryView.swiftconstvalues",
+    "dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/DiscoveryView.d",
+    "diagnostics" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/DiscoveryView.dia",
+    "index-unit-output-path" : "/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/DiscoveryView.o",
+    "llvm-bc" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/DiscoveryView.bc",
+    "object" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/DiscoveryView.o",
+    "swift-dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/DiscoveryView.swiftdeps",
+    "swiftmodule" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/DiscoveryView~partial.swiftmodule"
+  },
+  "/Users/kumarsaurabh/Desktop/Matchmate/MatchMate/Features/Discovery/ProfileCardView.swift" : {
+    "const-values" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/ProfileCardView.swiftconstvalues",
+    "dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/ProfileCardView.d",
+    "diagnostics" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/ProfileCardView.dia",
+    "index-unit-output-path" : "/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/ProfileCardView.o",
+    "llvm-bc" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/ProfileCardView.bc",
+    "object" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/ProfileCardView.o",
+    "swift-dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/ProfileCardView.swiftdeps",
+    "swiftmodule" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/ProfileCardView~partial.swiftmodule"
+  },
+  "/Users/kumarsaurabh/Desktop/Matchmate/MatchMate/Features/Discovery/UserProfile.swift" : {
+    "const-values" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/UserProfile.swiftconstvalues",
+    "dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/UserProfile.d",
+    "diagnostics" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/UserProfile.dia",
+    "index-unit-output-path" : "/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/UserProfile.o",
+    "llvm-bc" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/UserProfile.bc",
+    "object" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/UserProfile.o",
+    "swift-dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/UserProfile.swiftdeps",
+    "swiftmodule" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/UserProfile~partial.swiftmodule"
+  },
+  "/Users/kumarsaurabh/Desktop/Matchmate/MatchMate/MatchMateApp.swift" : {
+    "const-values" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMateApp.swiftconstvalues",
+    "dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMateApp.d",
+    "diagnostics" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMateApp.dia",
+    "index-unit-output-path" : "/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMateApp.o",
+    "llvm-bc" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMateApp.bc",
+    "object" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMateApp.o",
+    "swift-dependencies" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMateApp.swiftdeps",
+    "swiftmodule" : "/Users/kumarsaurabh/Desktop/Matchmate/build/Build/Intermediates.noindex/MatchMate.build/Debug-iphonesimulator/MatchMate.build/Objects-normal/arm64/MatchMateApp~partial.swiftmodule"
+  }
+}
