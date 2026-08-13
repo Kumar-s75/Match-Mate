@@ -6,7 +6,7 @@ final class DiscoveryViewModel: ObservableObject {
 
     @Published private(set) var profiles: [UserProfile] = []
 
-    @Published private(set) var currentIndex: Int = 0
+    @Published private(set) var currentIndex = 0
 
     @Published var dragOffset: CGSize = .zero
 
@@ -14,15 +14,26 @@ final class DiscoveryViewModel: ObservableObject {
 
     @Published var matchedProfile: UserProfile?
 
+    @Published var isLoading = false
+
+    @Published var errorMessage: String?
+
+    private let repository:
+        ProfileRepositoryProtocol
+
     let swipeThreshold: CGFloat = 120
 
-    init() {
-        profiles = Self.mockProfiles
+    init(
+        repository: ProfileRepositoryProtocol =
+            ProfileRepository()
+    ) {
+        self.repository = repository
     }
 
     // MARK: - Current Profile
 
     var currentProfile: UserProfile? {
+
         guard currentIndex < profiles.count else {
             return nil
         }
@@ -33,6 +44,7 @@ final class DiscoveryViewModel: ObservableObject {
     // MARK: - Next Profile
 
     var nextProfile: UserProfile? {
+
         guard currentIndex + 1 < profiles.count else {
             return nil
         }
@@ -40,22 +52,59 @@ final class DiscoveryViewModel: ObservableObject {
         return profiles[currentIndex + 1]
     }
 
-    // MARK: - Has More Profiles
+    // MARK: - More Profiles
 
     var hasMoreProfiles: Bool {
         currentIndex < profiles.count
     }
 
-    // MARK: - Handle Swipe
+    // MARK: - Load Profiles
 
-    func handleSwipe(_ translation: CGSize) {
+    func loadProfiles() {
+
+        isLoading = true
+        errorMessage = nil
+
+        Task {
+
+            do {
+
+                let loadedProfiles =
+                    try await repository.fetchProfiles()
+
+                profiles = loadedProfiles
+                currentIndex = 0
+
+            } catch {
+
+                errorMessage =
+                    "Unable to load profiles."
+
+            }
+
+            isLoading = false
+        }
+    }
+
+    // MARK: - Swipe
+
+    func handleSwipe(
+        _ translation: CGSize
+    ) {
 
         if translation.width > swipeThreshold {
+
             like()
-        } else if translation.width < -swipeThreshold {
+
+        } else if translation.width <
+                    -swipeThreshold {
+
             pass()
+
         } else {
+
             withAnimation(.spring()) {
+
                 dragOffset = .zero
             }
         }
@@ -69,22 +118,26 @@ final class DiscoveryViewModel: ObservableObject {
             return
         }
 
-        withAnimation(.easeIn(duration: 0.35)) {
+        withAnimation(.easeIn(duration: 0.3)) {
+
             dragOffset = CGSize(
                 width: 800,
                 height: 0
             )
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + 0.3
+        ) {
 
             self.currentIndex += 1
             self.dragOffset = .zero
 
-            // Temporary demo matching logic.
-            // This will later come from the backend.
             if profile.compatibility >= 90 {
-                self.matchedProfile = profile
+
+                self.matchedProfile =
+                    profile
+
                 self.showMatch = true
             }
         }
@@ -98,14 +151,17 @@ final class DiscoveryViewModel: ObservableObject {
             return
         }
 
-        withAnimation(.easeIn(duration: 0.35)) {
+        withAnimation(.easeIn(duration: 0.3)) {
+
             dragOffset = CGSize(
                 width: -800,
                 height: 0
             )
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + 0.3
+        ) {
 
             self.currentIndex += 1
             self.dragOffset = .zero
@@ -121,65 +177,4 @@ final class DiscoveryViewModel: ObservableObject {
         showMatch = false
         matchedProfile = nil
     }
-
-    // MARK: - Mock Data
-
-    private static let mockProfiles: [UserProfile] = [
-
-        UserProfile(
-            name: "Priya",
-            age: 24,
-            location: "Delhi",
-            bio: "Love travelling, photography and discovering new places.",
-            interests: [
-                "Travel",
-                "Photography",
-                "Music"
-            ],
-            compatibility: 92,
-            imageSystemName: "person.crop.circle.fill"
-        ),
-
-        UserProfile(
-            name: "Ananya",
-            age: 23,
-            location: "Mumbai",
-            bio: "Coffee enthusiast who enjoys books, movies and weekend trips.",
-            interests: [
-                "Coffee",
-                "Books",
-                "Movies"
-            ],
-            compatibility: 87,
-            imageSystemName: "person.crop.circle.fill"
-        ),
-
-        UserProfile(
-            name: "Riya",
-            age: 23,
-            location: "Bangalore",
-            bio: "Software engineer, foodie and occasional trekker.",
-            interests: [
-                "Technology",
-                "Food",
-                "Trekking"
-            ],
-            compatibility: 84,
-            imageSystemName: "person.crop.circle.fill"
-        ),
-
-        UserProfile(
-            name: "Sneha",
-            age: 24,
-            location: "Pune",
-            bio: "Designer who loves art, hiking and exploring new cafes.",
-            interests: [
-                "Design",
-                "Hiking",
-                "Food"
-            ],
-            compatibility: 81,
-            imageSystemName: "person.crop.circle.fill"
-        )
-    ]
 }
