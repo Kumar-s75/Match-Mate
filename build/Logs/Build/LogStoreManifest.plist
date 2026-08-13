@@ -6,7 +6,7 @@
 	<integer>12</integer>
 	<key>logs</key>
 	<dict>
-		<key>8A5E4C42-6BEC-4CAA-9091-9A132EF95677</key>
+		<key>561FE774-676D-4E5D-85B3-0AE345207EB8</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>8A5E4C42-6BEC-4CAA-9091-9A132EF95677.xcactivitylog</string>
+			<string>561FE774-676D-4E5D-85B3-0AE345207EB8.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -40,13 +40,55 @@
 			<key>signature</key>
 			<string>Building project MatchMate with scheme MatchMate and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>808295677.87517202</real>
+			<real>808296383.79040897</real>
 			<key>timeStoppedRecording</key>
-			<real>808295730.12292099</real>
+			<real>808296384.64684701</real>
 			<key>title</key>
 			<string>Building project MatchMate with scheme MatchMate and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>8A5E4C42-6BEC-4CAA-9091-9A132EF95677</string>
+			<string>561FE774-676D-4E5D-85B3-0AE345207EB8</string>
+		</dict>
+		<key>CA6A5FE3-5FC9-479C-A877-288BB193ECC1</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CA6A5FE3-5FC9-479C-A877-288BB193ECC1.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>MatchMate project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>MatchMate</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project MatchMate with scheme MatchMate and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>808296112.90369594</real>
+			<key>timeStoppedRecording</key>
+			<real>808296154.35514295</real>
+			<key>title</key>
+			<string>Building project MatchMate with scheme MatchMate and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>CA6A5FE3-5FC9-479C-A877-288BB193ECC1</string>
 		</dict>
 	</dict>
 </dict>
