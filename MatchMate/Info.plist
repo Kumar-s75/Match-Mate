@@ -27,5 +27,13 @@
 
     <key>LSRequiresIPhoneOS</key>
     <true/>
+
+    <!-- Allow MatchMate to communicate with the local FastAPI server -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+
 </dict>
 </plist>
