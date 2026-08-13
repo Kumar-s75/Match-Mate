@@ -1,9 +1,30 @@
+# macOS
 .DS_Store
-/.build
-/Packages
+
+# Xcode
 xcuserdata/
 DerivedData/
-.swiftpm/configuration/registries.json
-.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+*.xcuserstate
+*.xcscmblueprint
+
+# Swift Package Manager
+.build/
+Packages/
+.swiftpm/
 .netrc
-./build
+
+# Xcode-generated files
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# Build output
+build/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Temporary files
+*.swp
+*.swo
